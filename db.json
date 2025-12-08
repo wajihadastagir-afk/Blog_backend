@@ -1,0 +1,92 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "password123",
+      "bio": "Software developer and blogger",
+      "profilePicture": null,
+      "createdAt": "2023-01-15T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "password": "password123",
+      "bio": "Tech writer and content creator",
+      "profilePicture": null,
+      "createdAt": "2023-01-20T14:30:00Z"
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "title": "Getting Started with React",
+      "content": "# Getting Started with React\n\nReact is a powerful JavaScript library for building user interfaces. In this post, we'll explore the basics of React and how to get started with your first application.\n\n## What is React?\n\nReact is a library created by Facebook that makes it easy to build interactive UIs. It uses a component-based architecture and a virtual DOM for efficient updates.\n\n## Key Features\n\n- **Component-based**: Build encapsulated components that manage their own state\n- **Virtual DOM**: Efficient updates and rendering\n- **JSX**: Write HTML-like syntax in JavaScript\n- **Unidirectional data flow**: Predictable state management\n\n## Getting Started\n\nTo create a new React app, you can use Create React App:\n\n```bash\nnpx create-react-app my-app\ncd my-app\nnpm start\n```\n\nThis will create a new React application and start the development server.",
+      "author": {
+        "id": "1",
+        "name": "John Doe",
+        "email": "john@example.com"
+      },
+      "createdAt": "2023-01-15T10:00:00Z",
+      "updatedAt": "2023-01-15T10:00:00Z",
+      "comments": [
+        {
+          "id": "1",
+          "content": "Great introduction to React! Very helpful for beginners.",
+          "author": {
+            "id": "2",
+            "name": "Jane Smith"
+          },
+          "createdAt": "2023-01-15T11:30:00Z"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Understanding JavaScript Closures",
+      "content": "# Understanding JavaScript Closures\n\nClosures are one of the most important concepts in JavaScript. They allow functions to access variables from their outer scope even after the outer function has returned.\n\n## What is a Closure?\n\nA closure is a function that has access to variables in its outer (enclosing) scope even after the outer function returns.\n\n## Example\n\n```javascript\nfunction outerFunction(x) {\n  return function innerFunction(y) {\n    return x + y;\n  };\n}\n\nconst addFive = outerFunction(5);\nconsole.log(addFive(3)); // 8\n```\n\nIn this example, `innerFunction` has access to the variable `x` from `outerFunction` even after `outerFunction` has returned.\n\n## Common Use Cases\n\n- **Data Privacy**: Create private variables\n- **Function Factories**: Create specialized functions\n- **Event Handlers**: Maintain state in event handlers\n- **Module Pattern**: Create modules with private and public methods",
+      "author": {
+        "id": "2",
+        "name": "Jane Smith",
+        "email": "jane@example.com"
+      },
+      "createdAt": "2023-01-20T14:30:00Z",
+      "updatedAt": "2023-01-20T14:30:00Z",
+      "comments": []
+    },
+    {
+      "id": "3",
+      "title": "Building Responsive Web Applications",
+      "content": "# Building Responsive Web Applications\n\nIn today's multi-device world, building responsive web applications is crucial for providing a great user experience across all devices.\n\n## Mobile-First Approach\n\nStart with mobile design and progressively enhance for larger screens:\n\n1. **Mobile First**: Design for the smallest screen first\n2. **Progressive Enhancement**: Add features for larger screens\n3. **Touch-Friendly**: Ensure buttons and links are touch-friendly\n\n## CSS Grid and Flexbox\n\nModern CSS layout techniques make responsive design easier:\n\n```css\n.container {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  gap: 1rem;\n}\n```\n\n## Testing Responsiveness\n\n- Use browser dev tools\n- Test on real devices\n- Consider different screen sizes\n- Test both portrait and landscape orientations",
+      "author": {
+        "id": "1",
+        "name": "John Doe",
+        "email": "john@example.com"
+      },
+      "createdAt": "2023-01-25T09:15:00Z",
+      "updatedAt": "2023-01-25T09:15:00Z",
+      "comments": [
+        {
+          "id": "2",
+          "content": "Excellent tips for responsive design! The mobile-first approach is definitely the way to go.",
+          "author": {
+            "id": "2",
+            "name": "Jane Smith"
+          },
+          "createdAt": "2023-01-25T10:45:00Z"
+        },
+        {
+          "id": "3",
+          "content": "Great examples with CSS Grid. This will help me improve my layouts.",
+          "author": {
+            "id": "1",
+            "name": "John Doe"
+          },
+          "createdAt": "2023-01-25T11:20:00Z"
+        }
+      ]
+    }
+  ]
+}
