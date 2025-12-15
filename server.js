@@ -3,20 +3,27 @@ const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const connectDB = require('./config/database');
+const config = require('./config/config');
 const User = require('./models/User');
 const Post = require('./models/Post');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = config.PORT;
 
 // Connect to MongoDB
 connectDB();
 
 // Middleware
-app.use(cors());
+// CORS configuration for Azure deployment
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || '*', // Allow frontend URL from Azure or all origins in development
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+const JWT_SECRET = config.JWT_SECRET;
 
 // Role authorization middleware
 const authorizeRoles = (...allowedRoles) => (req, res, next) => {
@@ -305,6 +312,6 @@ app.get('/admin/users', authenticateToken, authorizeRoles('admin'), async (_req,
   }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
 });
