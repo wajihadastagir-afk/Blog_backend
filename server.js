@@ -10,9 +10,29 @@ const Post = require('./models/Post');
 const app = express();
 const PORT = config.PORT;
 
+const express = require("express");
+const cors = require("cors");
+const connectDB = require("./config/db");
+const config = require("./config/config");
+
+const app = express();
+const PORT = config.PORT;
+// 1️⃣ CORS FIRST!!!
+app.use(cors({
+  origin: "https://kind-grass-05ed7dc00.3.azurestaticapps.net",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true,
+}));
+
+// 2️⃣ JSON parser
+app.use(express.json());
 
 // Connect to MongoDB
 connectDB();
+app.use("/posts", require("./routes/postRoutes"));
+app.use("/auth", require("./routes/authRoutes"));
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 // Middleware
 // CORS configuration for Azure deployment
