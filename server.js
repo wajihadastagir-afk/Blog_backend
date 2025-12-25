@@ -9,33 +9,34 @@ const Post = require('./models/Post');
 
 const app = express();
 const PORT = config.PORT;
-const cors = require("cors");
-const express = require("express");
-const app = express();
 
-// Allow your live frontend domain
+
+
+
+
+
+// Connect to MongoDB
+connectDB();
+// CORS for Azure frontend
+const allowedOrigin = "https://kind-grass-05ed7dc00.3.azurestaticapps.net";
 app.use(cors({
-  origin: "https://kind-grass-05ed7dc00.3.azurestaticapps.net",
-  methods: "GET,POST,PUT,DELETE",
+  origin: allowedOrigin,
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 
 app.use(express.json());
 
-
-// Connect to MongoDB
-connectDB();
-
 // Middleware
 // CORS configuration for Azure deployment
 
-const corsOptions = {
-  origin: process.env.FRONTEND_URL || '*', // Allow frontend URL from Azure or all origins in development
-  credentials: true,
-  optionsSuccessStatus: 200
-};
-app.use(cors(corsOptions));
-app.use(express.json());
+##const corsOptions = {
+##  origin: process.env.FRONTEND_URL || '*', // Allow frontend URL from Azure or all origins in development
+##  credentials: true,
+##  optionsSuccessStatus: 200
+##};
+##app.use(cors(corsOptions));
+##app.use(express.json());
 
 const JWT_SECRET = config.JWT_SECRET;
 
