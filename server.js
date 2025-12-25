@@ -9,21 +9,25 @@ const Post = require('./models/Post');
 
 const app = express();
 const PORT = config.PORT;
+const cors = require("cors");
+const express = require("express");
+const app = express();
+
+// Allow your live frontend domain
+app.use(cors({
+  origin: "https://kind-grass-05ed7dc00.3.azurestaticapps.net",
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true
+}));
+
+app.use(express.json());
+
 
 // Connect to MongoDB
 connectDB();
 
 // Middleware
 // CORS configuration for Azure deployment
-const cors = require("cors");
-
-app.use(cors({
-  origin: "https://kind-grass-05ed7dc00.3.azurestaticapps.net", // your frontend domain
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
-
-app.use(express.json());
 
 const corsOptions = {
   origin: process.env.FRONTEND_URL || '*', // Allow frontend URL from Azure or all origins in development
