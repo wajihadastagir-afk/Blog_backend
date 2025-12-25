@@ -11,32 +11,19 @@ const app = express();
 const PORT = config.PORT;
 
 
-
-
-
-
 // Connect to MongoDB
 connectDB();
-// CORS for Azure frontend
-const allowedOrigin = "https://kind-grass-05ed7dc00.3.azurestaticapps.net";
-app.use(cors({
-  origin: allowedOrigin,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
-
-app.use(express.json());
 
 // Middleware
 // CORS configuration for Azure deployment
 
-##const corsOptions = {
-##  origin: process.env.FRONTEND_URL || '*', // Allow frontend URL from Azure or all origins in development
-##  credentials: true,
-##  optionsSuccessStatus: 200
-##};
-##app.use(cors(corsOptions));
-##app.use(express.json());
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || '*', // Allow frontend URL from Azure or all origins in development
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+app.use(express.json());
 
 const JWT_SECRET = config.JWT_SECRET;
 
